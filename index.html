@@ -78,7 +78,29 @@
             }
 
             console.log("PC marcou > " + escolhaCP);
+            document.getElementById("img-pc").src = "pc-"+escolhaCP+".jpg";
+            document.getElementById("img-pc").style.filter = "none";
+            // pedra .. ??
+            // papel .. ??
+            // tesoura .. ??
+            var resultado= "";
+            if (escolhaJogador == "pedra" && escolhaCP == "tesoura") {
+                resultado = "Vitória";
+            } else if (escolhaJogador == "papel" && escolhaCP == "pedra") {
+                resultado = "Vitória";
+            } else if (escolhaJogador == "tesoura" && escolhaCP == "papel") {
+                resultado = "Vitória";
+            } else if (escolhaJogador == escolhaCP) {
+                resultado = "Empate";
+            } else {
+                resultado = "Derrota";
+            }
+
+            console.log(resultado);
+
+            document.getElementById("placar-resultado").innerText = resultado;
         }
+        
 
     </script>
 
@@ -87,7 +109,7 @@
         <img id="pedra" class="opcao-jogo" onclick="escolher(this)" src="pedra.png" alt="">
         <img id="papel" class="opcao-jogo" onclick="escolher(this)" src="papel.png" alt="">
         <img id="tesoura" class="opcao-jogo" onclick="escolher(this)" src="tesoura.png" alt="">
-        <img src="pc.jpg" alt="">
+        <img id="img-pc" src="pc.jpg" alt="">
     </div>
     <br>
     <div id="placar">
