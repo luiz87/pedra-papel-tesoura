@@ -1,10 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Pedra-Papel-Tesoura</title>
+
+    <style>
+        h1 {
+            text-align: center;
+            border: 8px solid black;
+
+        }
+
+        #campo {
+            text-align: center;
+            border: 8px solid black;
+        }
+
+        img {
+            filter: grayscale(100%);
+        }
+
+        #placar {
+            border: 8px solid black;
+            text-align: center;
+        }
+
+        #placar div {
+            text-align: center;
+
+            display: inline;
+        }
+
+        #bt-play {
+            height: 100px;
+        }
+
+        .opcao-jogo {}
+    </style>
 </head>
+
 <body>
-    
+
+    <script>
+
+        var escolhaJogador = "";
+
+        function escolher(escolhida) {
+            document.getElementById("pedra").style.filter = "grayscale(100%)";
+            document.getElementById("papel").style.filter = "grayscale(100%)";
+            document.getElementById("tesoura").style.filter = "grayscale(100%)";
+            console.log(escolhida.id);
+            document.getElementById(escolhida.id).style.filter = "none";
+            escolhaJogador = escolhida.id;
+        }
+
+        function jogar() {
+            // 2 informações necessário
+            // 1 - qual foi a opção que o jogador escolheu
+            // 2 - qual vai ser o valor pro computador
+            var escolhaCP = ""
+            console.log("Jogador marcou > " + escolhaJogador);
+            var aleatorio = Math.floor(Math.random() * 3);
+            // vai converter o número para o texto
+            switch (aleatorio) {
+                case 0:
+                    escolhaCP = "pedra";
+                    break;
+                case 1:
+                    escolhaCP = "papel";
+                    break;
+                case 2:
+                    escolhaCP = "tesoura";
+                    break;
+                default:
+                    break;
+            }
+
+            console.log("PC marcou > " + escolhaCP);
+        }
+
+    </script>
+
+    <h1>Desafio Pedra-Papel-Tesoura</h1>
+    <div id="campo">
+        <img id="pedra" class="opcao-jogo" onclick="escolher(this)" src="pedra.png" alt="">
+        <img id="papel" class="opcao-jogo" onclick="escolher(this)" src="papel.png" alt="">
+        <img id="tesoura" class="opcao-jogo" onclick="escolher(this)" src="tesoura.png" alt="">
+        <img src="pc.jpg" alt="">
+    </div>
+    <br>
+    <div id="placar">
+        <div id="placar-jogar">0</div>
+        <div id="placar-resultado">-</div>
+        <div id="placar-pc">0</div>
+
+    </div>
+    <br>
+    <img id="bt-play" onclick="jogar()" src="play.png" alt="">
+
 </body>
+
 </html>
